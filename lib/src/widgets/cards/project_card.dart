@@ -26,7 +26,7 @@ class PFProjectCard extends BaseCard {
  cardHeight =
         constraints.maxWidth < 600
             ? constraints.maxWidth * 1.5
-            : constraints.maxWidth * 0.35;           
+            : constraints.maxWidth * 0.2;           
   }
 
   @override

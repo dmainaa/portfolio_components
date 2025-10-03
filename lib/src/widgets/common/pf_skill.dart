@@ -16,33 +16,36 @@ class PFSkill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              PFText(
-                title,
-                textColor: PFAppColors.defaultTextColor,
-                style: PFAppTypography.regular,
-                fontSize: 14,
-              ),
-              const PFSpacer(),
-              PFSkillLevel(percentage: percentage),
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(PFAppSize.s4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                PFText(
+                  title,
+                  textColor: PFAppColors.defaultTextColor,
+                 
+                  fontSize: 14,
+                ),
+                const PFSpacer(size: PFAppSize.s10,),
+                PFSkillLevel(percentage: percentage),
+              ],
+            ),
           ),
-        ),
-        PFText(
-          "${(percentage * 100).toStringAsFixed(0)}%",
-          style: PFAppTypography.regular.copyWith(
-            color: PFAppColors.defaultTextColor,
+          PFText(
+            "${(percentage * 100).toStringAsFixed(0)}%",
+            style: PFAppTypography.regular.copyWith(
+              color: PFAppColors.defaultTextColor,
+            ),
+            fontSize: 12,
           ),
-          fontSize: 12,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

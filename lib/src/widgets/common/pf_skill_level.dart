@@ -11,7 +11,7 @@ class PFSkillLevel extends StatelessWidget {
   const PFSkillLevel({
     super.key,
     required this.percentage,
-    this.height = PFAppSize.s12,
+    this.height = PFAppSize.s10,
     this.borderRadius = PFAppSize.s8,
   }) : assert(percentage >= 0 && percentage <= 1,
             "Percentage must be between 0.0 and 1.0");
@@ -33,8 +33,8 @@ class PFSkillLevel extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  PFAppColors.scaffoldBackground,
                   PFAppColors.primary,
+                  PFAppColors.secondary,
                 ],
               ),
               borderRadius: BorderRadius.circular(borderRadius),

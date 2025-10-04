@@ -28,8 +28,9 @@ class PFPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isMobile = MediaQuery.of(context).size.width < 600;
     return SizedBox(
-      width: width ?? double.infinity,
+      width: isMobile ? double.infinity : width ?? 300,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? PFAppColors.primary,

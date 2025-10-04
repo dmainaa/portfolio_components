@@ -16,8 +16,8 @@ class PFBadge extends StatelessWidget {
     this.textColor = PFAppColors.primary,
     this.borderColor = PFAppColors.primary,
     this.borderRadius = 12.0,
-    this.backgroundColor = PFAppColors.primary,
-    this.padding = const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+    this.backgroundColor = PFAppColors.scaffoldBackground,
+    this.padding = const EdgeInsets.symmetric(horizontal: PFAppSize.s8, vertical: PFAppSize.s4),
     this.fontSize = 12,
   });
 
@@ -33,8 +33,11 @@ class PFBadge extends StatelessWidget {
       child: PFText(
         title,
         textColor: textColor,
-        fontSize: fontSize,
-        style: PFAppTypography.regular,
+        fontSize: PFAppSize.s4,
+        style: PFAppTypography.regular.copyWith(
+          fontSize: PFAppSize.s8,
+          color: textColor,
+        ),
       ),
     );
   }

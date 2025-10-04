@@ -1,6 +1,7 @@
 library portfolio_components;
 
 export 'package:portfolio_components/src/widgets/cards/project_card.dart';
+export 'package:portfolio_components/src/widgets/cards/base_card.dart';
 export 'package:portfolio_components/src/widgets/text/pf_text.dart';
 export 'package:portfolio_components/src/theme/app_colors.dart';    
 export 'package:portfolio_components/src/theme/app_typography.dart';
@@ -21,3 +22,7 @@ export 'package:portfolio_components/src/widgets/common/pf_tablayout.dart';
 export 'package:portfolio_components/src/widgets/common/models/pf_badge.dart';
 export 'package:portfolio_components/src/widgets/common/pf_image_view.dart';
 export 'package:portfolio_components/src/widgets/common/models/pf_project.dart';
+export 'package:portfolio_components/src/widgets/common/pf_skill.dart';
+export 'package:portfolio_components/src/widgets/common/pf_skill_level.dart';
+export 'package:portfolio_components/src/widgets/common/pf_layout.dart';
+export 'package:portfolio_components/src/widgets/cards/skill_card.dart';

@@ -13,16 +13,18 @@ class PFSkillsCard extends BaseCard {
   }) : super(constraints: constraints);
 
   @override
-  Widget? get child => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children:
-        [
-          PFText(
-            title,
-            style: PFAppTypography.bold.copyWith(color: PFAppColors.accent),
-          ),
-          PFSpacer(size: PFAppSize.s16),
-          ...skills.map((skill) => PFSkill(title: skill.title, percentage: skill.percentage)),
-        ]
+  Widget? get child => SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children:
+          [
+            PFText(
+              title,
+              style: PFAppTypography.bold.copyWith(color: PFAppColors.accent),
+            ),
+            PFSpacer(size: PFAppSize.s16),
+            ...skills.map((skill) => PFSkill(title: skill.title, percentage: skill.percentage)),
+          ]
+    ),
   );
-}
+} 

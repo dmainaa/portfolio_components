@@ -23,38 +23,43 @@ class _PFTabLayoutState extends State<PFTabLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(widget.items.length, (index) {
-        final isSelected = _selectedIndex == index;
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-          child: OutlinedButton(
-            onPressed: () {
-              setState(() => _selectedIndex = index);
-              widget.onTabSelected(index);
-            },
-            style: OutlinedButton.styleFrom(
-              backgroundColor: isSelected
-                  ? PFAppColors.primary
-                  : PFAppColors.scaffoldBackground,
-              foregroundColor: isSelected ? Colors.white : PFAppColors.primary,
-              side: BorderSide(color: PFAppColors.primary),
-              shape: const StadiumBorder(),
-              padding: const EdgeInsets.symmetric(
-                vertical: 12,
-                horizontal: 24,
+    final isMobile = MediaQuery.of(context).size.width < PFAppSize.mobile;
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: isMobile ? MainAxisAlignment.start : MainAxisAlignment.center,
+        children: List.generate(widget.items.length, (index) {
+          final isSelected = _selectedIndex == index;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: OutlinedButton(
+              onPressed: () {
+                setState(() => _selectedIndex = index);
+                widget.onTabSelected(index);
+              },
+              style: OutlinedButton.styleFrom(
+                backgroundColor: isSelected
+                    ? PFAppColors.primary
+                    : PFAppColors.scaffoldBackground,
+                foregroundColor: isSelected ? Colors.white : PFAppColors.primary,
+                side: BorderSide(color: PFAppColors.primary),
+                shape: const StadiumBorder(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 24,
+                ),
+              ),
+              child: PFText(
+                widget.items[index].name,
+                style: PFAppTypography.semiBold,
+                fontSize: PFAppSize.s14,
+                textColor: isSelected ? Colors.white : PFAppColors.primary,
               ),
             ),
-            child: PFText(
-              widget.items[index].name,
-              style: PFAppTypography.semiBold,
-              fontSize: PFAppSize.s14,
-              textColor: isSelected ? Colors.white : PFAppColors.primary,
-            ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

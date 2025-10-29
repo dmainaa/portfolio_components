@@ -46,6 +46,7 @@ class PFSectionTitleWidget extends StatelessWidget {
               color: Colors.white,
             ),
             textAlign: TextAlign.center,
+            maxLines: 5,
           ),
           const PFSpacer(size: PFAppSize.s10),
     

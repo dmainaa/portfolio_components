@@ -18,10 +18,14 @@ class BaseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Calculate available width accounting for margins
+    final marginHorizontal = (margin as EdgeInsets?)?.horizontal ?? 16.0;
+    final availableWidth = constraints.maxWidth - marginHorizontal;
+
     return Container(
-      width:  constraints.maxWidth < 600
-            ? constraints.maxWidth
-            : constraints.maxWidth * 0.3,   
+      width: constraints.maxWidth < 600
+            ? availableWidth
+            : (constraints.maxWidth * 0.3) - marginHorizontal,
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(

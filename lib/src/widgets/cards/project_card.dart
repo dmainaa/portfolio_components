@@ -19,12 +19,13 @@ class PFProjectCard extends BaseCard {
 
   @override
   Widget get child => Column(
+    mainAxisSize: MainAxisSize.min,
     children: [
       //Image View
       Container(
-        height: constraints.maxWidth * 0.45,
+        height: 150,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(PFAppSize.s12),
             topRight: Radius.circular(PFAppSize.s12),
           ),
@@ -34,58 +35,60 @@ class PFProjectCard extends BaseCard {
           ),
         ),
       ),
-      PFSpacer(size: PFAppSize.s16),
-      Expanded(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: PFAppSize.s16,
-            vertical: 21,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: PFText(
-                      project.title,
-                      style: PFAppTypography.bold.copyWith(
-                        fontSize: PFAppSize.s16,
-                        color: PFAppColors.defaultTextColor,
+      const PFSpacer(size: PFAppSize.s16),
+      Flexible(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: PFAppSize.s16,
+              vertical: 12,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: PFText(
+                        project.title,
+                        style: PFAppTypography.bold.copyWith(
+                          fontSize: PFAppSize.s16,
+                          color: PFAppColors.defaultTextColor,
+                        ),
+                        maxLines: 2,
                       ),
                     ),
-                  ),
-                  PFBadge(title: project.title),
-                ],
-              ),
-              PFSpacer(size: PFAppSize.s2),
-              PFText(
-                project.description,
-                style: PFAppTypography.regular.copyWith(
-                  fontSize: PFAppSize.s12,
-                  color: PFAppColors.defaultTextColor,
+                    PFBadge(title: project.title),
+                  ],
                 ),
-                maxLines: null,
-              ),
-              PFSpacer(size: PFAppSize.s16),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children:
-                    project.teckStack
-                        ?.map(
-                          (tech) => Padding(
-                            padding: const EdgeInsets.only(right: PFAppSize.s8),
-                            child: PFBadge(
+                const PFSpacer(size: PFAppSize.s8),
+                PFText(
+                  project.description,
+                  style: PFAppTypography.regular.copyWith(
+                    fontSize: PFAppSize.s12,
+                    color: PFAppColors.defaultTextColor,
+                  ),
+                  maxLines: 3,
+                ),
+                const PFSpacer(size: PFAppSize.s12),
+                Wrap(
+                  spacing: PFAppSize.s8,
+                  runSpacing: PFAppSize.s8,
+                  children:
+                      project.teckStack
+                          ?.map(
+                            (tech) => PFBadge(
                               title: tech,
                               textColor: PFAppColors.accent,
                               borderColor: PFAppColors.primary,
                             ),
-                          ),
-                        )
-                        .toList() ??
-                    [],
-              ),
-            ],
+                          )
+                          .toList() ??
+                      [],
+                ),
+              ],
+            ),
           ),
         ),
       ),

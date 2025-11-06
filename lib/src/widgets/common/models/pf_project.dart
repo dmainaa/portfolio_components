@@ -4,6 +4,7 @@ class PFProject {
   final String title;
   final String description;
   final String imageUrl;
+  final String? imageBanner;
   final String projectUrl;
   final String mainStack;
   final List<String>? teckStack;
@@ -13,6 +14,7 @@ class PFProject {
     required this.title,
     required this.description,
     required this.imageUrl,
+    this.imageBanner,
     required this.projectUrl,
     required this.teckStack,
     required this.techTags,
@@ -23,7 +25,7 @@ class PFProject {
 class TechTag {
   String name;
   IconData icon;
-  String link;
+  String? link;
 
-  TechTag({required this.name, required this.icon, required this.link});
+  TechTag({required this.name, required this.icon, this.link});
 }

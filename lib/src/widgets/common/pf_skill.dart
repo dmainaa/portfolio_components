@@ -7,11 +7,13 @@ import 'package:portfolio_components/src/widgets/common/pf_skill_level.dart';
 class PFSkill extends StatelessWidget {
   final String title;
   final double percentage;
+  final bool isStarred;
 
   const PFSkill({
     super.key,
     required this.title,
     required this.percentage,
+    this.isStarred = false,
   });
 
   @override

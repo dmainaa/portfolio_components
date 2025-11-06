@@ -18,80 +18,78 @@ class PFProjectCard extends BaseCard {
   EdgeInsetsGeometry get padding => const EdgeInsets.all(0);
 
   @override
-  Widget get child => Column(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      //Image View
-      Container(
-        height: 150,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(PFAppSize.s12),
-            topRight: Radius.circular(PFAppSize.s12),
-          ),
-          image: DecorationImage(
-            image: AssetImage(project.imageUrl),
-            fit: BoxFit.cover,
+  Widget get child => SingleChildScrollView(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        //Image View
+        Container(
+          height: constraints.maxHeight * 0.6,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(PFAppSize.s12),
+              topRight: Radius.circular(PFAppSize.s12),
+            ),
+            image: DecorationImage(
+              image: AssetImage(project.imageUrl),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-      ),
-      const PFSpacer(size: PFAppSize.s16),
-      Flexible(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: PFAppSize.s16,
-              vertical: 12,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: PFText(
-                        project.title,
-                        style: PFAppTypography.bold.copyWith(
-                          fontSize: PFAppSize.s16,
-                          color: PFAppColors.defaultTextColor,
-                        ),
-                        maxLines: 2,
+        const PFSpacer(size: PFAppSize.s16),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: PFAppSize.s16,
+            vertical: 12,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: PFText(
+                      project.title,
+                      style: PFAppTypography.bold.copyWith(
+                        fontSize: PFAppSize.s16,
+                        color: PFAppColors.defaultTextColor,
                       ),
+                      maxLines: 2,
                     ),
-                    PFBadge(title: project.title),
-                  ],
-                ),
-                const PFSpacer(size: PFAppSize.s8),
-                PFText(
-                  project.description,
-                  style: PFAppTypography.regular.copyWith(
-                    fontSize: PFAppSize.s12,
-                    color: PFAppColors.defaultTextColor,
                   ),
-                  maxLines: 3,
+                  PFBadge(title: project.title),
+                ],
+              ),
+              const PFSpacer(size: PFAppSize.s8),
+              PFText(
+                project.description,
+                style: PFAppTypography.regular.copyWith(
+                  fontSize: PFAppSize.s12,
+                  color: PFAppColors.defaultTextColor,
                 ),
-                const PFSpacer(size: PFAppSize.s12),
-                Wrap(
-                  spacing: PFAppSize.s8,
-                  runSpacing: PFAppSize.s8,
-                  children:
-                      project.teckStack
-                          ?.map(
-                            (tech) => PFBadge(
-                              title: tech,
-                              textColor: PFAppColors.accent,
-                              borderColor: PFAppColors.primary,
-                            ),
-                          )
-                          .toList() ??
-                      [],
-                ),
-              ],
-            ),
+                maxLines: 3,
+              ),
+              const PFSpacer(size: PFAppSize.s12),
+              Wrap(
+                spacing: PFAppSize.s8,
+                runSpacing: PFAppSize.s8,
+                children:
+                    project.teckStack
+                        ?.map(
+                          (tech) => PFBadge(
+                            title: tech,
+                            textColor: PFAppColors.accent,
+                            borderColor: PFAppColors.primary,
+                          ),
+                        )
+                        .toList() ??
+                    [],
+              ),
+            ],
           ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }

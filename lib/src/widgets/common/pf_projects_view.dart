@@ -22,19 +22,17 @@ class PFProjectsView extends StatelessWidget {
       crossAxisCount = 1; // Mobile
     }
 
-    return SizedBox(
-      height: 500,
-      child: GridView.builder(
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxisCount,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          childAspectRatio: 1.2,
-        ),
-        itemCount: children.length,
-        itemBuilder: (_, index) => children[index],
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+        childAspectRatio: 1,
       ),
+      itemCount: children.length,
+      itemBuilder: (_, index) => children[index],
     );
   }
 }

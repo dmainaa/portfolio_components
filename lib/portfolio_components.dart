@@ -24,6 +24,7 @@ export 'package:portfolio_components/src/widgets/common/pf_image_view.dart';
 export 'package:portfolio_components/src/widgets/common/models/pf_project.dart';
 export 'package:portfolio_components/src/widgets/common/pf_skill.dart';
 export 'package:portfolio_components/src/widgets/common/pf_skill_level.dart';
+export 'package:portfolio_components/src/widgets/common/pf_starred_skills_view.dart';
 export 'package:portfolio_components/src/widgets/common/pf_layout.dart';
 export 'package:portfolio_components/src/widgets/cards/skill_card.dart';
 export 'package:portfolio_components/src/widgets/common/models/pf_resume.dart';

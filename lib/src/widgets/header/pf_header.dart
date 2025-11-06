@@ -129,7 +129,7 @@ class PFHeader extends StatelessWidget implements PreferredSizeWidget {
                 color: PFAppColors.scaffoldBackground.withValues(alpha: 0.7),
                 borderRadius: BorderRadius.circular(50),
                 border: Border.all(
-                  color: PFAppColors.primary.withValues(alpha: 0.3),
+                  color: PFAppColors.primary,
                   width: 1,
                 ),
                 boxShadow: [

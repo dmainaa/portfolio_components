@@ -4,8 +4,8 @@ import 'package:portfolio_components/src/theme/app_size.dart';
 import 'package:portfolio_components/src/widgets/cards/base_card.dart';
 import 'package:portfolio_components/src/widgets/common/models/pf_badge.dart';
 import 'package:portfolio_components/src/widgets/common/models/pf_project.dart';
-
 import 'package:portfolio_components/src/widgets/common/pf_spacer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PFProjectCard extends BaseCard {
   final PFProject project;
@@ -63,7 +63,7 @@ class PFProjectCard extends BaseCard {
               ),
               const PFSpacer(size: PFAppSize.s8),
               PFText(
-                project.description,
+                project.simpleDesc,
                 style: PFAppTypography.regular.copyWith(
                   fontSize: PFAppSize.s12,
                   color: PFAppColors.defaultTextColor,
@@ -86,10 +86,51 @@ class PFProjectCard extends BaseCard {
                         .toList() ??
                     [],
               ),
+              if (project.projectLinks != null && project.projectLinks!.isNotEmpty) ...[
+                const PFSpacer(size: PFAppSize.s12),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: PFAppSize.s8),
+                  child: Row(
+                    children: project.projectLinks!.map((link) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: PFAppSize.s8),
+                        child: InkWell(
+                          onTap: () => _launchUrl(link.url),
+                          borderRadius: BorderRadius.circular(PFAppSize.s8),
+                          child: Container(
+                            padding: const EdgeInsets.all(PFAppSize.s8),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(PFAppSize.s8),
+                              border: Border.all(
+                                color: Colors.white.withValues(alpha: 0.5),
+                              ),
+                            ),
+                            child: Icon(
+                              link.icon,
+                              size: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
             ],
           ),
         ),
       ],
     ),
   );
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    try {
+      await launchUrl(uri, mode: LaunchMode.platformDefault);
+    } catch (e) {
+      debugPrint('Could not launch $url: $e');
+    }
+  }
 }

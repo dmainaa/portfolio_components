@@ -34,8 +34,7 @@ class PFText extends StatelessWidget {
           ),
       textAlign: textAlign,
       maxLines: maxLines,
-
-      overflow: overflow ?? TextOverflow.ellipsis,
+      overflow: overflow ?? (maxLines == null ? null : TextOverflow.ellipsis),
     );
   }
 }

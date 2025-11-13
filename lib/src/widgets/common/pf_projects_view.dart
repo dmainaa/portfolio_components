@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_components/portfolio_components.dart';
 
 /// A responsive grid view for displaying projects
 class PFProjectsView extends StatelessWidget {
@@ -13,14 +14,7 @@ class PFProjectsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    int crossAxisCount;
-    if (width >= 1024) {
-      crossAxisCount = 3; // Desktop/Web
-    } else if (width >= 600) {
-      crossAxisCount = 2; // Tablet
-    } else {
-      crossAxisCount = 1; // Mobile
-    }
+    final crossAxisCount = PFResponsiveUtils.getGridColumns(width);
 
     return GridView.builder(
       shrinkWrap: true,
@@ -29,7 +23,7 @@ class PFProjectsView extends StatelessWidget {
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
-        childAspectRatio: 1,
+
       ),
       itemCount: children.length,
       itemBuilder: (_, index) => children[index],

@@ -29,3 +29,4 @@ export 'package:portfolio_components/src/widgets/common/pf_layout.dart';
 export 'package:portfolio_components/src/widgets/cards/skill_card.dart';
 export 'package:portfolio_components/src/widgets/common/models/pf_resume.dart';
 export 'package:portfolio_components/src/widgets/dialogs/pf_resume_dialog.dart';
+export 'package:portfolio_components/src/utils/pf_responsive_utils.dart';

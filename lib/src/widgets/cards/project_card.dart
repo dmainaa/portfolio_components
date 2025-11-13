@@ -9,13 +9,11 @@ import 'package:url_launcher/url_launcher.dart';
 class PFProjectCard extends BaseCard {
   final PFProject project;
   final BoxConstraints constraints;
-  final double screenWidth;
 
   const PFProjectCard({
     super.key,
     required this.project,
     required this.constraints,
-    required this.screenWidth,
   }) : super(constraints: constraints);
 
   @override
@@ -23,6 +21,9 @@ class PFProjectCard extends BaseCard {
 
   @override
   Widget get child {
+    // Calculate screenWidth from constraints
+    final screenWidth = constraints.maxWidth * PFResponsiveUtils.getGridColumns(constraints.maxWidth);
+
     // Get scaled font sizes based on grid density
     final titleFontSize = PFResponsiveUtils.getResponsiveFontSizeScaled(
       screenWidth,
